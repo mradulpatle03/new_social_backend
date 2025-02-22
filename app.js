@@ -17,7 +17,7 @@ app.use(cookieParser());
 app.use(helmet());
 app.use(cors(
     {
-        origin:["http://localhost:3000"],
+        origin:["http://localhost:3000","https://new-social-frontend-1zg1.vercel.app"],
         credentials:true,
     }
 ));
