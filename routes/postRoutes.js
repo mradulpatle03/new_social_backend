@@ -1,0 +1,17 @@
+const express = require("express");
+const isAuthenticated = require("../middleware/isAuthenticated");
+const {createPost} = require("../controllers/postController");
+const {getAllPosts, getUserPosts, saveOrUnsavepost, deletePost, addComment, likeOrDislikePost} = require("../controllers/postController");
+const upload=require("../middleware/multer");
+
+const router = express.Router();
+
+router.post("/create-post",isAuthenticated,upload.single("image"), createPost);
+router.get("/all",getAllPosts);
+router.get("/user-post/:id",getUserPosts);
+router.post("/save-unsave-post/:postId",isAuthenticated,saveOrUnsavepost);
+router.delete("/delete-post/:id",isAuthenticated,deletePost);
+router.post("/like-dislike/:id",isAuthenticated,likeOrDislikePost);
+router.post("/comment/:id",isAuthenticated,addComment);
+
+module.exports = router;
