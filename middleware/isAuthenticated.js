@@ -5,7 +5,7 @@ const AppError = require("../utils/appError");
 
 
 const isAuthenticated = catchAsync(async (req, res, next) => {
-    const token = req.cookies.jwt || req.headers.authorization.split(" ")[1];
+    const token = req.cookies.jwt || req.headers?.authorization?.split(" ")[1];
     if (!token) {
         return next(new AppError("You are not logged in", 401));
     }   
